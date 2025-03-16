@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { insertContactSchema, type InsertContact } from "@shared/schema";
-import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
+import { sendContactEmail } from "@/lib/emailjs";
 import {
   Form,
   FormControl,
@@ -34,7 +34,7 @@ export default function Contact() {
 
   const mutation = useMutation({
     mutationFn: async (data: InsertContact) => {
-      await apiRequest("POST", "/api/contact", data);
+      await sendContactEmail(data);
     },
     onSuccess: () => {
       toast({

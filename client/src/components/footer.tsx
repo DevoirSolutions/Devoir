@@ -32,11 +32,11 @@ export default function Footer() {
                 +54 264 570-4903
               </a>
               <a
-                href="mailto:contacto@devoir.com"
+                href="mailto:contacto@devoir.pro"
                 className="flex items-center text-gray-200 hover:text-white"
               >
                 <Mail className="h-5 w-5 mr-2" />
-                contacto@devoir.com
+                contacto@devoir.pro
               </a>
               <div className="flex items-center text-gray-200">
                 <MapPin className="h-5 w-5 mr-2" />
