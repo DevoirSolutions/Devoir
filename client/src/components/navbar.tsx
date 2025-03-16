@@ -8,15 +8,17 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import logo from "../assets/brand.png";
+import { useState } from "react";
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);  // estado para el menu
+  
   const sections = [
     { name: "Inicio", href: "hero" },
     { name: "Por Qué Elegirnos", href: "why-us" },
     { name: "Servicios", href: "services" },
     { name: "Proyectos", href: "projects" },
     { name: "Equipo", href: "team" },
-    { name: "Testimonios", href: "testimonials" },
     { name: "Contacto", href: "contact" }
   ];
 
@@ -56,7 +58,7 @@ export default function Navbar() {
           </div>
 
           {/* Menú móvil - visible en pantallas hasta 1000px */}
-          <Sheet>
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="lg:hidden">
               <Button variant="ghost" size="icon">
                 <Menu className="h-6 w-6" />
@@ -69,11 +71,7 @@ export default function Navbar() {
                     key={section.href}
                     onClick={() => {
                       scrollToSection(section.href);
-                      // Cerrar el menú después de hacer clic
-                      const closeButton = document.querySelector('[data-radix-collection-item]');
-                      if (closeButton instanceof HTMLElement) {
-                        closeButton.click();
-                      }
+                      setIsOpen(false);   // cierra el menu  MORA BUGTESTING MASTERCLASS
                     }}
                     className="text-left py-2 text-gray-600 hover:text-primary transition-colors"
                   >
