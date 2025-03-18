@@ -14,7 +14,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-8">
           {/* Información de la empresa */}
           <div>
-            <h3 className="text-xl font-semibold mb-4">Devoir</h3>
+            <h3 className="text-xl font-semibold mb-4">devoir</h3>
             <p className="text-gray-200 mb-4">
               Soluciones digitales personalizadas para hacer crecer tu negocio
             </p>
@@ -61,21 +61,21 @@ export default function Footer() {
               >
                 <Instagram className="h-6 w-6" />
               </a>
-              <a
+              {/* <a
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-gray-200"
               >
                 <Linkedin className="h-6 w-6" />
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
 
         <div className="border-t border-gray-200/20 mt-8 pt-8 text-center text-gray-200">
           <p>
-            &copy; {new Date().getFullYear()} Devoir. Todos los derechos
+            &copy; {new Date().getFullYear()} devoir. Todos los derechos
             reservados.
           </p>
         </div>

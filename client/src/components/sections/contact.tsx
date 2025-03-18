@@ -206,7 +206,7 @@ export default function Contact() {
                   </Button>
                 </a>
 
-                <a
+                {/* <a
                   href="https://linkedin.com/company/devoir"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -215,7 +215,7 @@ export default function Contact() {
                     <Linkedin className="mr-2 h-5 w-5 text-blue-500" />
                     LinkedIn
                   </Button>
-                </a>
+                </a> */}
               </div>
             </div>
             <Separator />

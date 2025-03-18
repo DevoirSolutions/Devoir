@@ -1,0 +1,15 @@
+# Permitir acceso a todos los robots
+User-agent: *
+Allow: /
+
+# Excluir áreas privadas o en desarrollo
+Disallow: /admin/
+Disallow: /pruebas/
+Disallow: /dev/
+
+# Rutas específicas a excluir
+Disallow: /buscar
+Disallow: /*?query=
+
+# Sitemap
+Sitemap: https://www.tudominio.com/sitemap.xml 
