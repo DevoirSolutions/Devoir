@@ -18,7 +18,7 @@ const team = [
   {
     name: "Nicolas Vargas Elizondo",
     image: imageNico,
-    rol: ["Diseñador gráfico", "Animador", "Especialista en UX/UI"],
+    rol: ["Diseñador gráfico", "Animador", "Diseñador UX/UI"],
     description: "Crea identidades visuales, animaciones y experiencias de usuario optimizadas para el entorno digital, combinando diseño, UX/UI y estrategia de contenido para potenciar marcas en línea y en redes sociales.",
     isFounder: false
   },
