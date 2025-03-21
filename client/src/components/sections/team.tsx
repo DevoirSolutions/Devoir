@@ -25,7 +25,7 @@ const team = [
   {
     name: "Juan Cruz Mora",
     image: imageMora,
-    rol: ["Desarrollador Full Stack", "Coordinador de gestión"],
+    rol: ["Desarrollador Full Stack", "Gestión de sistemas"],
     description: "Combina el desarrollo full-stack con la supervisión de la gestión y operaciones, aportando una perspectiva estratégica desde Sistemas de Información para asegurar la excelencia técnica, la optimización de procesos y el alineamiento de objetivos empresariales.",
     isFounder: true
   },
