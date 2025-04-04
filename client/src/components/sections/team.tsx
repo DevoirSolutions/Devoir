@@ -11,14 +11,14 @@ const team = [
   {
     name: "Federico Ruiz Castilla",
     image: imageFede,
-    rol: ["Product Owner", "Desarrollador Full Stack", "Estratega en Marketing Digital"],
+    rol: ["Product Owner", "Desarrollador Full Stack", "Marketing Digital"],
     description: "Lidera la visión del producto, la estrategia UX/UI y el desarrollo full-stack, trabajando junto a los clientes para materializar sus ideas. Combina su experiencia en multimedia, comunicación y desarrollo de software para entregar productos al mercado.",
     isFounder: true
   },
   {
     name: "Nicolas Vargas Elizondo",
     image: imageNico,
-    rol: ["Diseñador gráfico", "Animador", "Diseñador UX/UI"],
+    rol: ["Diseñador Gráfico", "Motion Designer", "Diseñador UX/UI"],
     description: "Crea identidades visuales, animaciones y experiencias de usuario optimizadas para el entorno digital, combinando diseño, UX/UI y estrategia de contenido para potenciar marcas en línea y en redes sociales.",
     isFounder: false
   },

@@ -12,8 +12,8 @@ const services = [
   {
     icon: Megaphone,
     title: "Marketing Digital",
-    description: "Estrategias de marketing digital y gestión de redes sociales para aumentar tu presencia online.",
-    features: ["Gestión de Redes", "Campañas Digitales", "Análisis de Datos", "Contenido Digital"]
+    description: "Estrategias de marketing digital y creación de contenido para campañas y redes sociales para aumentar tu presencia online.",
+    features: ["Diseño para Redes Sociales", "Campañas Digitales", "Análisis de Datos", "Contenido Digital"]
   }
 ];
 
