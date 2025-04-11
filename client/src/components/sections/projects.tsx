@@ -14,11 +14,17 @@ const projects = [
     image: palletImage
   },
   {
+    id: "tu-nuevo-proyecto",
+    title: "Tu Nuevo Proyecto",
+    description: "Descripción breve del proyecto que se mostrará en la sección de proyectos destacados",
+    image: "https://images.unsplash.com/photo-1493723843671-1d655e66ac1c?q=80&w=800&auto=format&fit=crop"
+  },
+  /*{
     id: "marketing-digital-vinoteca",
     title: "Marketing Digital para Vinoteca",
     description: "Estrategia integral de redes sociales y e-commerce",
     image: "https://images.unsplash.com/photo-1493723843671-1d655e66ac1c?q=80&w=800&auto=format&fit=crop"
-  },
+  },*/
   {
     id: "app-web-facturacion",
     title: "App Web de Facturación",

@@ -10,10 +10,35 @@ import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import palletImage from "../assets/pallet-03-sin-nombre.png";
+import wordWizardsImage from "../assets/wwtest.png";
+import wordWizardsVideo from "../assets/wwvideo.mp4";
 import palletLogoWithName from "../assets/pallet-02-con-nombre.png";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
+interface GalleryImage {
+  src: string;
+  alt: string;
+  description: string;
+  type: string;
+}
+
+interface ProjectDetails {
+  title: string;
+  description: string;
+  fullDescription: string[];
+  features: string[];
+  benefits: string[];
+  image: string;
+  techStack: string[];
+  gallery?: GalleryImage[];
+}
 
 // Datos de ejemplo para los sistemas de software
-const projectsDetails = {
+const projectsDetails: Record<string, ProjectDetails> = {
   "Pallet": {
     title: "Pallet",
     description: "Sistema destinado a la gestión de inventario y ventas para empresas que buscan optimizar sus procesos.",
@@ -88,6 +113,51 @@ const projectsDetails = {
     ],
     image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop",
     techStack: ["React", "Node.js", "AWS", "API AFIP"]
+  },
+  "tu-nuevo-proyecto": {
+    title: "WordWizards",
+    description: "Una web de inscripción para talleres de inglés, paso a paso, 100% responsive, optimizado para SEO y accesible desde cualquier dispositivo.",
+    fullDescription: [
+      "El sitio permite a los usuarios registrarse de forma guiada, con validación de correo electrónico, acceso a toda la información relevante sobre los turnos, y una experiencia completamente adaptada a cualquier dispositivo.", 
+      "Nuestra solución permite inscribirse a un taller de inglés de manera simple, rápida y accesible. Analizamos las necesidades del cliente y las de sus usuarios, y diseñamos una experiencia paso a paso, guiada e intuitiva."
+    ],
+    features: [
+      "Inscripción paso a paso",
+      "Verificación de correo electrónico",
+      "Diseño responsive",
+      "Carga rápida",
+      "Panel de administrador",
+      "Característica principal 6"
+    ],
+    benefits: [
+      "Beneficio 1",
+      "Beneficio 2",
+      "Beneficio 3",
+      "Beneficio 4",
+      "Beneficio 5"
+    ],
+    image: wordWizardsImage,
+    techStack: ["React", "Node.js", "Express", "MongoDB"],
+    gallery: [
+      {
+        src: wordWizardsVideo,
+        alt: "Video demostrativo de WordWizards",
+        description: "Video demostrativo de la plataforma",
+        type: "video"
+      },
+      {
+        src: wordWizardsImage,
+        alt: "Captura de pantalla 2 de WordWizards",
+        description: "Formulario de inscripción",
+        type: "image"
+      },
+      {
+        src: wordWizardsImage,
+        alt: "Captura de pantalla 3 de WordWizards",
+        description: "Panel de administrador",
+        type: "image"
+      }
+    ]
   }
 };
 
@@ -219,24 +289,104 @@ export default function ProjectDetails() {
               </motion.div>
             </div>
 
+            {project.gallery && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="mt-16"
+              >
+                <h2 className={`text-2xl font-bold mb-8 ${isDarkMode ? "text-[#55a1e8]" : ""}`}>Galería del Proyecto</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {project.gallery.map((item, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      className={`rounded-xl overflow-hidden shadow-lg ${isDarkMode ? "bg-[#0a2a45]" : "bg-white"}`}
+                    >
+                      <Dialog>
+                        <DialogTrigger className="w-full aspect-video">
+                          {item.type === "video" ? (
+                            <video
+                              src={item.src}
+                              className="w-full h-full object-cover cursor-pointer"
+                              controls={false}
+                              muted
+                              loop
+                              autoPlay
+                              playsInline
+                            />
+                          ) : (
+                            <img
+                              src={item.src}
+                              alt={item.alt}
+                              className="w-full h-full object-cover cursor-pointer"
+                            />
+                          )}
+                        </DialogTrigger>
+                        <DialogContent className="max-w-5xl p-0">
+                          {item.type === "video" ? (
+                            <video
+                              src={item.src}
+                              className="w-full aspect-video object-cover"
+                              controls={false}
+                              muted
+                              loop
+                              autoPlay
+                              playsInline
+                            />
+                          ) : (
+                            <img
+                              src={item.src}
+                              alt={item.alt}
+                              className="w-full aspect-video object-cover"
+                            />
+                          )}
+                        </DialogContent>
+                      </Dialog>
+                      <div className={`p-6 ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>
+                        <p className="text-base font-medium">{item.description}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="mt-16 text-center bg-[#081f32] rounded-xl p-10 shadow-xl"
+              className="mt-16 text-center bg-[#F8F7F3] rounded-xl p-10 shadow-xl"
             >
-              <h2 className={`text-2xl font-bold mb-3 text-[#55a1e8]`}>¿Interesado en este proyecto?</h2>
-              <p className={`text-base mb-8 max-w-3xl mx-auto text-gray-300`}>
-                Contáctanos para obtener más información sobre cómo podemos adaptar esta solución a las necesidades específicas de tu empresa.
+              <h2 className={`text-2xl font-bold mb-3 text-[#333333]`}>¿Te gustaría saber más?</h2>
+              <p className={`text-base mb-8 max-w-3xl mx-auto text-gray-600`}>
+                Explora el sitio en vivo o contáctanos para obtener más información sobre nuestros talleres de inglés.
               </p>
-              <Link href="/#contact">
-                <Button 
-                  size="lg" 
-                  className={`px-10 py-6 bg-[#55a1e8] hover:bg-[#3d8bd7] text-white font-medium text-base`}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a 
+                  href="https://www.wordwizards.pro/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
                 >
-                  Solicitar Demo
-                </Button>
-              </Link>
+                  <Button 
+                    size="lg" 
+                    className="px-10 py-6 bg-[#333333] hover:bg-[#555555] text-white font-medium text-base"
+                  >
+                    Ver sitio en vivo
+                  </Button>
+                </a>
+                <Link href="/#contact">
+                  <Button 
+                    size="lg" 
+                    className="px-10 py-6 bg-white hover:bg-gray-100 text-[#333333] border border-[#333333] font-medium text-base"
+                  >
+                    Contáctanos
+                  </Button>
+                </Link>
+              </div>
             </motion.div>
           </div>
         </main>
