@@ -9,27 +9,38 @@ import {
 } from "@/components/ui/sheet";
 import palletLogo from "../assets/pallet-02-con-nombre.png";
 import { useState } from "react";
+import { useLocation } from "wouter";
 
 export default function PalletNavbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [location] = useLocation();
+  const isProjectPage = location.startsWith("/proyecto/Pallet");
   
-  const sections = [
-    { name: "Inicio", href: "/#hero" },
-    { name: "Funcionalidades", href: "/#features" },
-    { name: "Precios", href: "/#pricing" },
-    { name: "Contacto", href: "/#contact" }
-  ];
+  const sections = isProjectPage
+    ? [
+        { name: "Descripción", href: "#heroP" },
+        { name: "Detalles", href: "#about" },
+      ]
+    : [
+        { name: "Inicio", href: "/#heroP" },
+        { name: "Funcionalidades", href: "/#features" },
+        { name: "Precios", href: "/#pricing" },
+        { name: "Contacto", href: "/#contact" },
+      ];
 
   const scrollToSection = (id: string) => {
-    // Si estamos en la página de Pallet, volver a la página principal y luego desplazarse
-    if (window.location.pathname.includes("/proyecto")) {
-      window.location.href = id;
-    } else {
-      const element = document.getElementById(id.replace("#", ""));
+    if (id.startsWith("#")) {
+      const elementId = id.substring(1);
+      const element = document.getElementById(elementId);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.location.href = `/${id}`;
       }
+    } else {
+      window.location.href = id;
     }
+    setIsOpen(false);
   };
 
   return (
@@ -64,7 +75,7 @@ export default function PalletNavbar() {
           ))}
           <Button 
             className="bg-[#55a1e8] hover:bg-[#3d8bd7] text-white px-6"
-            onClick={() => scrollToSection("/#contact")}
+            onClick={() => scrollToSection(isProjectPage ? "#contact-cta" : "/#contact")}
           >
             Solicitar Demo
           </Button>
@@ -86,7 +97,6 @@ export default function PalletNavbar() {
                     className="text-gray-200 hover:text-white font-medium transition-colors text-left"
                     onClick={() => {
                       scrollToSection(section.href);
-                      setIsOpen(false);
                     }}
                   >
                     {section.name}
@@ -95,8 +105,7 @@ export default function PalletNavbar() {
                 <Button 
                   className="bg-[#55a1e8] hover:bg-[#3d8bd7] text-white mt-4"
                   onClick={() => {
-                    scrollToSection("/#contact");
-                    setIsOpen(false);
+                    scrollToSection(isProjectPage ? "#contact-cta" : "/#contact");
                   }}
                 >
                   Solicitar Demo

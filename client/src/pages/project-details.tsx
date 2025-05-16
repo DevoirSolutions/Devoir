@@ -8,7 +8,7 @@ import WordWizardsFooter from "@/components/wordwizards-footer";
 import WhatsAppButton from "@/components/whatsapp-button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import palletImage from "../assets/pallet-03-sin-nombre.png";
@@ -158,7 +158,7 @@ const projectsDetails: Record<string, ProjectDetails> = {
       "Toma de decisiones basada en datos reales"
     ],
     image: palletImage,
-    techStack: ["React", "Node.js", "Express", "MongoDB"]
+    techStack: ["Python", "PySide6", "PostreSQL", "SQLAlchemy"]
   },
   "marketing-digital-vinoteca": {
     title: "Marketing Digital para Vinoteca",
@@ -286,7 +286,7 @@ export default function ProjectDetails() {
     );
   }
 
-  // Definir clases específicas basadas en si es Pallet o no
+  // Use isPallet directly for conditional styling
   const isDarkMode = isPallet;
   const bgColor = isDarkMode ? "bg-[#061624]" : "bg-[#0A0A1A]";
   const textColor = isDarkMode ? "text-gray-200" : "text-gray-100";
@@ -319,7 +319,9 @@ export default function ProjectDetails() {
               </Button>
             </Link>
 
+            {/* Hero Section */}
             <motion.div
+              id="heroP"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -406,6 +408,7 @@ export default function ProjectDetails() {
             )}
 
             <motion.div
+              id="contact-cta"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
