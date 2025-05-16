@@ -210,7 +210,7 @@ const projectsDetails: Record<string, ProjectDetails> = {
     image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop",
     techStack: ["React", "Node.js", "AWS", "API AFIP"]
   },
-  "tu-nuevo-proyecto": {
+  "wordwizards": {
     title: "WordWizards",
     description: "Una web de inscripción para talleres de inglés, paso a paso, 100% responsive, optimizado para SEO y accesible desde cualquier dispositivo.",
     fullDescription: [
@@ -268,7 +268,7 @@ export default function ProjectDetails() {
   const projectId = params?.id || "";
   const project = projectsDetails[projectId as keyof typeof projectsDetails];
   const isPallet = projectId === "Pallet";
-  const isWordWizards = projectId === "tu-nuevo-proyecto";
+  const isWordWizards = projectId === "wordwizards";
 
   if (!project) {
     return (
@@ -286,33 +286,27 @@ export default function ProjectDetails() {
     );
   }
 
-  // Use isPallet directly for conditional styling
-  const isDarkMode = isPallet;
-  const bgColor = isDarkMode ? "bg-[#061624]" : "bg-[#0A0A1A]";
-  const textColor = isDarkMode ? "text-gray-200" : "text-gray-100";
-  const headingColor = isDarkMode ? "text-[#55a1e8]" : "text-[#4A90E2]";
-  const cardBgColor = isDarkMode ? "bg-[#0a2a45]" : "bg-[#1A1A2E]";
-  const buttonStyle = isDarkMode ? "bg-[#55a1e8] hover:bg-[#3d8bd7] text-white" : "bg-[#4A90E2] hover:bg-[#357ABD] text-white";
-
   return (
     <>
       {isPallet ? <PalletNavbar /> : isWordWizards ? <WordWizardsNavbar /> : <Navbar />}
       <WhatsAppButton />
       <ScrollArea className="h-[100vh] w-full">
-        <main className={`min-h-screen pt-32 pb-16 relative ${isDarkMode ? "bg-[#051525]/95 text-gray-200" : "bg-[#0A0A1A]/95"}`}>
-          <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none">
-            <ParticlesBackground 
-              starCount={200}
-              starColor="rgba(255, 255, 255, 0.8)"
-              speed={0.05}
-              magicDustEnabled={true}
-            />
-          </div>
+        <main className={`min-h-screen pt-32 pb-16 relative ${isPallet ? "bg-[#051525]/95 text-gray-200" : isWordWizards ? "bg-[#0A0A1A]/95 text-gray-100" : "bg-gray-100 text-gray-800"}`}>
+          {isWordWizards && (
+            <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none">
+              <ParticlesBackground 
+                starCount={200}
+                starColor="rgba(255, 255, 255, 0.8)"
+                speed={0.05}
+                magicDustEnabled={true}
+              />
+            </div>
+          )}
           <div className="container mx-auto px-6 max-w-7xl relative z-10">
             <Link href="/">
               <Button 
                 variant="ghost" 
-                className={`mb-8 flex items-center gap-2 text-base ${isDarkMode ? "text-gray-300 hover:text-white" : "text-gray-300 hover:text-white"}`}
+                className={`mb-8 flex items-center gap-2 text-base ${isPallet ? "text-gray-300 hover:text-white" : isWordWizards ? "text-gray-300 hover:text-white" : "text-gray-600 hover:text-black"}`}
               >
                 <ArrowLeft className="h-4 w-4" />
                 Volver a Proyectos
@@ -331,17 +325,17 @@ export default function ProjectDetails() {
                 <img 
                   src={isPallet ? palletLogoWithName : project.image} 
                   alt={project.title}
-                  className={`rounded-xl shadow-xl w-full h-auto object-contain max-h-[500px] ${isDarkMode ? "brightness-150 bg-[#081f32]/50 p-8" : "bg-[#1A1A2E]/50 p-8"}`}
+                  className={`rounded-xl shadow-xl w-full h-auto object-contain max-h-[500px] ${isPallet ? "brightness-150 bg-[#081f32]/50 p-8" : isWordWizards ? "bg-[#1A1A2E]/50 p-8" : "bg-gray-200 p-4"}`}
                 />
               </div>
               <div className="flex flex-col justify-center">
-                <h1 className={`text-4xl font-bold mb-6 ${isDarkMode ? "text-[#55a1e8]" : "text-[#4A90E2]"}`}>{project.title}</h1>
-                <p className={`text-xl mb-8 ${isDarkMode ? "text-gray-300" : "text-gray-200"}`}>{project.description}</p>
+                <h1 className={`text-4xl font-bold mb-6 ${isPallet ? "text-[#55a1e8]" : isWordWizards ? "text-[#4A90E2]" : "text-gray-900"}`}>{project.title}</h1>
+                <p className={`text-xl mb-8 ${isPallet ? "text-gray-300" : isWordWizards ? "text-gray-200" : "text-gray-700"}`}>{project.description}</p>
                 <div className="mb-8">
-                  <h2 className={`text-2xl font-semibold mb-6 ${isDarkMode ? "text-[#55a1e8]" : "text-[#4A90E2]"}`}>Tecnologías utilizadas</h2>
+                  <h2 className={`text-2xl font-semibold mb-6 ${isPallet ? "text-[#55a1e8]" : isWordWizards ? "text-[#4A90E2]" : "text-gray-900"}`}>Tecnologías utilizadas</h2>
                   <div className="flex flex-wrap gap-3">
                     {project.techStack.map(tech => (
-                      <span key={tech} className={`${isDarkMode ? "bg-[#55a1e8]/20 text-[#55a1e8]" : "bg-[#4A90E2]/20 text-[#4A90E2]"} px-6 py-2 rounded-full text-base font-medium`}>
+                      <span key={tech} className={`${isPallet ? "bg-[#55a1e8]/20 text-[#55a1e8]" : isWordWizards ? "bg-[#4A90E2]/20 text-[#4A90E2]" : "bg-blue-100 text-blue-700"} px-6 py-2 rounded-full text-base font-medium`}>
                         {tech}
                       </span>
                     ))}
@@ -357,10 +351,10 @@ export default function ProjectDetails() {
               className="mb-20"
               id="about"
             >
-              <h2 className={`text-3xl font-bold mb-8 ${isDarkMode ? "text-[#55a1e8]" : "text-[#4A90E2]"}`}>Acerca del proyecto</h2>
+              <h2 className={`text-3xl font-bold mb-8 ${isPallet ? "text-[#55a1e8]" : isWordWizards ? "text-[#4A90E2]" : "text-gray-900"}`}>Acerca del proyecto</h2>
               <div className="grid md:grid-cols-2 gap-12">
                 {project.fullDescription.map((paragraph, index) => (
-                  <p key={index} className={`mb-6 text-lg leading-relaxed ${isDarkMode ? "text-gray-300" : "text-gray-200"}`}>
+                  <p key={index} className={`mb-6 text-lg leading-relaxed ${isPallet ? "text-gray-300" : isWordWizards ? "text-gray-200" : "text-gray-700"}`}>
                     {paragraph}
                   </p>
                 ))}
@@ -372,14 +366,14 @@ export default function ProjectDetails() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className={`p-10 rounded-xl ${isDarkMode ? "bg-[#0a2a45] shadow-xl" : "bg-[#1A1A2E] shadow-xl"}`}
+                className={`p-10 rounded-xl shadow-xl ${isPallet ? "bg-[#0a2a45]" : isWordWizards ? "bg-[#1A1A2E]" : "bg-white"}`}
               >
-                <h2 className={`text-2xl font-bold mb-8 ${isDarkMode ? "text-[#55a1e8]" : "text-[#4A90E2]"}`}>Características principales</h2>
+                <h2 className={`text-2xl font-bold mb-8 ${isPallet ? "text-[#55a1e8]" : isWordWizards ? "text-[#4A90E2]" : "text-gray-900"}`}>Características principales</h2>
                 <ul className="space-y-4">
                   {project.features.map((feature, index) => (
                     <li key={index} className="flex items-start">
-                      <span className={`h-2.5 w-2.5 rounded-full mt-2 mr-3 ${isDarkMode ? "bg-[#55a1e8]" : "bg-[#4A90E2]"}`} />
-                      <span className={`text-base ${isDarkMode ? "text-gray-300" : "text-gray-200"}`}>{feature}</span>
+                      <span className={`h-2.5 w-2.5 rounded-full mt-2 mr-3 ${isPallet ? "bg-[#55a1e8]" : isWordWizards ? "bg-[#4A90E2]" : "bg-blue-500"}`} />
+                      <span className={`text-base ${isPallet ? "text-gray-300" : isWordWizards ? "text-gray-200" : "text-gray-700"}`}>{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -389,14 +383,14 @@ export default function ProjectDetails() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className={`p-10 rounded-xl ${isDarkMode ? "bg-[#0a2a45] shadow-xl" : "bg-[#1A1A2E] shadow-xl"}`}
+                className={`p-10 rounded-xl shadow-xl ${isPallet ? "bg-[#0a2a45]" : isWordWizards ? "bg-[#1A1A2E]" : "bg-white"}`}
               >
-                <h2 className={`text-2xl font-bold mb-8 ${isDarkMode ? "text-[#55a1e8]" : "text-[#4A90E2]"}`}>Beneficios</h2>
+                <h2 className={`text-2xl font-bold mb-8 ${isPallet ? "text-[#55a1e8]" : isWordWizards ? "text-[#4A90E2]" : "text-gray-900"}`}>Beneficios</h2>
                 <ul className="space-y-4">
                   {project.benefits.map((benefit, index) => (
                     <li key={index} className="flex items-start">
-                      <span className={`h-2.5 w-2.5 rounded-full mt-2 mr-3 ${isDarkMode ? "bg-[#55a1e8]" : "bg-[#4A90E2]"}`} />
-                      <span className={`text-base ${isDarkMode ? "text-gray-300" : "text-gray-200"}`}>{benefit}</span>
+                      <span className={`h-2.5 w-2.5 rounded-full mt-2 mr-3 ${isPallet ? "bg-[#55a1e8]" : isWordWizards ? "bg-[#4A90E2]" : "bg-blue-500"}`} />
+                      <span className={`text-base ${isPallet ? "text-gray-300" : isWordWizards ? "text-gray-200" : "text-gray-700"}`}>{benefit}</span>
                     </li>
                   ))}
                 </ul>
@@ -407,15 +401,16 @@ export default function ProjectDetails() {
               <Gallery images={project.gallery} />
             )}
 
+            {projectId !== "Pallet" && (
             <motion.div
               id="contact-cta"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="mt-20 text-center bg-[#1A1A2E] rounded-xl p-12 shadow-xl"
+              className={`mt-20 text-center rounded-xl p-12 shadow-xl ${isPallet ? "bg-[#0a2a45]" : isWordWizards ? "bg-[#1A1A2E]" : "bg-gray-100"}`}
             >
-              <h2 className={`text-3xl font-bold mb-6 text-[#4A90E2]`}>¿Te gustaría saber más?</h2>
-              <p className={`text-lg mb-10 max-w-3xl mx-auto text-gray-200`}>
+              <h2 className={`text-3xl font-bold mb-6 ${isPallet ? "text-[#55a1e8]" : isWordWizards ? "text-[#4A90E2]" : "text-gray-900"}`}>¿Te gustaría saber más?</h2>
+              <p className={`text-lg mb-10 max-w-3xl mx-auto ${isPallet ? "text-gray-300" : isWordWizards ? "text-gray-200" : "text-gray-700"}`}>
                 Explora el sitio en vivo o contáctanos para obtener más información sobre nuestros talleres de inglés.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -426,7 +421,7 @@ export default function ProjectDetails() {
                 >
                   <Button 
                     size="lg" 
-                    className="px-12 py-7 bg-[#4A90E2] hover:bg-[#357ABD] text-white font-medium text-lg"
+                    className={`px-12 py-7 text-white font-medium text-lg ${isPallet ? "bg-[#55a1e8] hover:bg-[#3d8bd7]" : isWordWizards ? "bg-[#4A90E2] hover:bg-[#357ABD]" : "bg-blue-600 hover:bg-blue-700"}`}
                   >
                     Ver sitio en vivo
                   </Button>
@@ -434,13 +429,14 @@ export default function ProjectDetails() {
                 <Link href="/#contact">
                   <Button 
                     size="lg" 
-                    className="px-12 py-7 bg-[#1A1A2E] hover:bg-[#2A2A3E] text-[#4A90E2] border border-[#4A90E2] font-medium text-lg"
+                    className={`px-12 py-7 font-medium text-lg ${isPallet ? "bg-[#0a2a45] hover:bg-[#081f32] text-[#55a1e8] border border-[#55a1e8]" : isWordWizards ? "bg-[#1A1A2E] hover:bg-[#2A2A3E] text-[#4A90E2] border border-[#4A90E2]" : "bg-white hover:bg-gray-50 text-blue-600 border border-blue-600"}`}
                   >
                     Contáctanos
                   </Button>
                 </Link>
               </div>
             </motion.div>
+            )}
           </div>
         </main>
         {isPallet ? <PalletFooter /> : isWordWizards ? <WordWizardsFooter /> : <Footer />}

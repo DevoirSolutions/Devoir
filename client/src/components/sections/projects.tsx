@@ -65,15 +65,15 @@ export default function Projects() {
                   <p className="text-gray-600 mb-4">{project.description}</p>
                   {project.id !== "app-web-facturacion" && (
                     project.id === "WordWizards" ? (
-                      <a href="https://www.wordwizards.pro/" target="_blank" rel="noopener noreferrer">
+                      <Link href={`/proyecto/wordwizards`}>
                         <Button 
                           className="w-full mt-2 flex items-center justify-center gap-2" 
                           variant="outline"
                         >
-                          Visitar sitio
+                          Conocer más
                           <ArrowRight className="h-4 w-4" />
                         </Button>
-                      </a>
+                      </Link>
                     ) : (
                       <Link href={`/proyecto/${project.id}`}>
                         <Button 
