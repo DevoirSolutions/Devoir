@@ -73,8 +73,8 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4">Contáctanos</h2>
-          <p className="text-lg text-gray-600">Estamos aquí para ayudarte</p>
+          <h2 className="text-4xl font-bold mb-4">Contactanos</h2>
+          <p className="text-lg text-gray-600">Estamos acá para ayudarte.</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
@@ -184,7 +184,7 @@ export default function Contact() {
 
           <div className="space-y-8">
             <div className="text-center">
-              <h3 className="text-2xl font-semibold mb-6">Contáctanos via:</h3>
+              <h3 className="text-2xl font-semibold mb-6">Contactanos via:</h3>
               <div className="grid gap-4">
                 <Button
                   variant="outline"

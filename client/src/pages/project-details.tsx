@@ -133,7 +133,6 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
   );
 };
 
-// Datos de ejemplo para los sistemas de software
 const projectsDetails: Record<string, ProjectDetails> = {
   "Pallet": {
     title: "Pallet",
@@ -233,14 +232,8 @@ const projectsDetails: Record<string, ProjectDetails> = {
       //"Beneficio 5"
     ],
     image: wwlogo,
-    techStack: ["React", "Node.js", "Express", "MongoDB"],
+    techStack: ["Next.js", "React", "TailwindCSS", "PostgreSQL"],
     gallery: [
-      {
-        src: wordWizardsVideo,
-        alt: "Video demostrativo de WordWizards",
-        description: "Video demostrativo de la plataforma",
-        type: "video"
-      },
       {
         src: wwhero,
         alt: "Hero de WordWizards",
@@ -252,12 +245,6 @@ const projectsDetails: Record<string, ProjectDetails> = {
         alt: "Formulario de inscripción de WordWizards",
         description: "Proceso de inscripción paso a paso",
         type: "image"
-      },
-      {
-        src: wwvideomobile,
-        alt: "Video de la versión móvil de WordWizards",
-        description: "Demostración de la experiencia móvil",
-        type: "video"
       }
     ]
   }
@@ -303,7 +290,7 @@ export default function ProjectDetails() {
             </div>
           )}
           <div className="container mx-auto px-6 max-w-7xl relative z-10">
-            <Link href="/">
+            <Link href="/#projects">
               <Button 
                 variant="ghost" 
                 className={`mb-8 flex items-center gap-2 text-base ${isPallet ? "text-gray-300 hover:text-white" : isWordWizards ? "text-gray-300 hover:text-white" : "text-gray-600 hover:text-black"}`}
@@ -352,7 +339,7 @@ export default function ProjectDetails() {
               id="about"
             >
               <h2 className={`text-3xl font-bold mb-8 ${isPallet ? "text-[#55a1e8]" : isWordWizards ? "text-[#4A90E2]" : "text-gray-900"}`}>Acerca del proyecto</h2>
-              <div className="grid md:grid-cols-2 gap-12">
+              <div>
                 {project.fullDescription.map((paragraph, index) => (
                   <p key={index} className={`mb-6 text-lg leading-relaxed ${isPallet ? "text-gray-300" : isWordWizards ? "text-gray-200" : "text-gray-700"}`}>
                     {paragraph}
@@ -411,7 +398,7 @@ export default function ProjectDetails() {
             >
               <h2 className={`text-3xl font-bold mb-6 ${isPallet ? "text-[#55a1e8]" : isWordWizards ? "text-[#4A90E2]" : "text-gray-900"}`}>¿Te gustaría saber más?</h2>
               <p className={`text-lg mb-10 max-w-3xl mx-auto ${isPallet ? "text-gray-300" : isWordWizards ? "text-gray-200" : "text-gray-700"}`}>
-                Explora el sitio en vivo o contáctanos para obtener más información sobre nuestros talleres de inglés.
+                Explorá el sitio en vivo y contactanos para hacer una consulta sobre una web similar.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <a 
@@ -431,7 +418,7 @@ export default function ProjectDetails() {
                     size="lg" 
                     className={`px-12 py-7 font-medium text-lg ${isPallet ? "bg-[#0a2a45] hover:bg-[#081f32] text-[#55a1e8] border border-[#55a1e8]" : isWordWizards ? "bg-[#1A1A2E] hover:bg-[#2A2A3E] text-[#4A90E2] border border-[#4A90E2]" : "bg-white hover:bg-gray-50 text-blue-600 border border-blue-600"}`}
                   >
-                    Contáctanos
+                    Contactanos
                   </Button>
                 </Link>
               </div>

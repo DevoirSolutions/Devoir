@@ -75,7 +75,7 @@ export default function PalletNavbar() {
           ))}
           <Button 
             className="bg-[#55a1e8] hover:bg-[#3d8bd7] text-white px-6"
-            onClick={() => scrollToSection(isProjectPage ? "#contact-cta" : "/#contact")}
+            onClick={() => scrollToSection("/#contact")}
           >
             Solicitar Demo
           </Button>
@@ -105,7 +105,7 @@ export default function PalletNavbar() {
                 <Button 
                   className="bg-[#55a1e8] hover:bg-[#3d8bd7] text-white mt-4"
                   onClick={() => {
-                    scrollToSection(isProjectPage ? "#contact-cta" : "/#contact");
+                    scrollToSection("/#contact");
                   }}
                 >
                   Solicitar Demo
